@@ -28,6 +28,7 @@ public class EventoController {
         return ResponseEntity.ok(eventoService.listar());
     }
 
+    // Busca por ed
     @GetMapping("/{id}")
     public ResponseEntity<Evento> buscarPorId(@PathVariable Long id){
         return eventoService.buscarPorId(id)
@@ -35,10 +36,14 @@ public class EventoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    // Crea eventos.
     @PostMapping
     public ResponseEntity<Evento> crear(@RequestBody Evento evento){
         Evento eventoGuardado = eventoService.guardar(evento);
         return ResponseEntity.status(HttpStatus.CREATED).body(eventoGuardado);
     }
+
+    // Reporta estadísticas de ventas y reservas por evento.
+    
 
 }

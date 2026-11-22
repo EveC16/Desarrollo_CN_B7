@@ -29,5 +29,4 @@ public class EventoService {
     public Optional<Evento> buscarPorId(Long id){
         return eventoRepository.findById(id);
     }
-
 }

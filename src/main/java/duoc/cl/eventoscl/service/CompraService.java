@@ -1,7 +1,10 @@
 package duoc.cl.eventoscl.service;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import duoc.cl.eventoscl.entity.Compra;
 import duoc.cl.eventoscl.entity.Evento;
@@ -12,13 +15,13 @@ public class CompraService {
 
     private final CompraRepository compraRepository;
     private final EventoService eventoService;
-
+    
     public CompraService(CompraRepository compraRepository, EventoService eventoService) {
         this.compraRepository = compraRepository;
         this.eventoService = eventoService;
     }
     
-    // Guardar nuevas compras
+    // Guarda nuevas compras
     public Compra guardar(Compra compra){
 
     Long eventoId = compra.getEvento().getId();
@@ -36,6 +39,16 @@ public class CompraService {
 
     // Guarda la compra en la base de datos
         return compraRepository.save(compra);
+    }
+
+    // Lista de compras disponibles
+    public List<Compra> listar(){
+        return compraRepository.findAll();
+    }
+
+    // Lista de compras por ID
+    public Optional<Compra> buscarPorId(Long id){
+        return compraRepository.findById(id);
     }
 
     // Modificar archivo de resumen de compra
