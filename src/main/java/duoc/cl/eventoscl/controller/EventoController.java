@@ -37,7 +37,7 @@ public class EventoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Crea eventos. (SEMANA I)
+    // Crea eventos. (SEMANA I) 
     @PostMapping
     public ResponseEntity<Evento> crear(@RequestBody Evento evento){
         Evento eventoGuardado = eventoService.guardar(evento);
