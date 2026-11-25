@@ -23,6 +23,7 @@ public class EventoController {
         this.eventoService = eventoService;
     }
 
+    // SEMANA I
     @GetMapping 
     public ResponseEntity<List<Evento>> listar(){
         return ResponseEntity.ok(eventoService.listar());
@@ -36,7 +37,7 @@ public class EventoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Crea eventos.
+    // Crea eventos. (SEMANA I)
     @PostMapping
     public ResponseEntity<Evento> crear(@RequestBody Evento evento){
         Evento eventoGuardado = eventoService.guardar(evento);
@@ -45,5 +46,4 @@ public class EventoController {
 
     // Reporta estadísticas de ventas y reservas por evento.
     
-
 }

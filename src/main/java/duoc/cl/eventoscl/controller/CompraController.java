@@ -18,7 +18,7 @@ public class CompraController {
         this.compraService = compraService;
     }
 
-    // Genera tickets.
+    // Genera tickets. (SEMANA I)
     @PostMapping
     public ResponseEntity<Compra> crearCompra(@RequestBody Compra compra){
         Compra compraGuardada = compraService.guardar(compra);
