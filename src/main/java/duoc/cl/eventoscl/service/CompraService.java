@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import duoc.cl.eventoscl.entity.Compra;
 import duoc.cl.eventoscl.entity.Evento;
@@ -49,29 +48,5 @@ public class CompraService {
     // Lista de compras por ID
     public Optional<Compra> buscarPorId(Long id){
         return compraRepository.findById(id);
-    }
-
-    // Modificar archivo de resumen de compra
-    public Optional<Compra> actualizarCompra(Long id, Compra compraAcrualizada){
-        Optional<Compra> encontrada = compraRepository.findById(id);
-        if(encontrada.isEmpty()){
-            return Optional.empty();
-        }
-        
-        Compra compra = encontrada.get();
-        compra.setEvento(compraAcrualizada.getEvento());
-        compra.setCantidadEntradas(compraAcrualizada.getCantidadEntradas());
-        
-        return Optional.of(compraRepository.save(compra));
-
-    }
-
-    // Eliminar archivo de resumen de compra
-    public boolean eliminar(Long id){
-        if(!compraRepository.existsById(id)){
-            return false;
-        }
-        compraRepository.deleteById(id);
-        return true;
     }
 }
