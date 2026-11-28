@@ -42,6 +42,10 @@ public class Compra {
     @Column(nullable = false)
     private BigDecimal precioUnitario;
 
+    public Long getId() {
+        return id;
+    }
+
     public Evento getEvento() {
         return evento;
     }
